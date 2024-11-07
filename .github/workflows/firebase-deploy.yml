@@ -16,19 +16,13 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '16'
-
-      - name: Install dependencies
-        run: npm install
+          node-version: '18'
 
       - name: Install Firebase CLI
         run: npm install -g firebase-tools
 
       - name: Firebase login (via CI)
         run: firebase use --add
-
-      - name: Authenticate Firebase CLI with FIREBASE_TOKEN
-        run: echo "${{ secrets.FIREBASE_TOKEN }}" | firebase login:ci --token  # Autenticación usando el token desde Secrets
 
       - name: Deploy to Firebase
         env:
